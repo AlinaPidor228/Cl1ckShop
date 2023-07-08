@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Магазин Cl1ck</title>
+  <style>
+    /* CSS стили */
+    @font-face {
+      font-family: 'Cl1ckFont';
+      src: url('12.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'AppetiteFont';
+      src: url('appetite.ttf') format('truetype');
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    h1 {
+      font-family: 'Cl1ckFont', Arial, sans-serif; /* Использование шрифта Cl1ckFont */
+      font-size: 32px;
+      text-align: center;
+      color: #000; /* Черный цвет */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .product {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: transparent; /* Прозрачный фон */
+    }
+
+    .product img {
+      max-width: 200px;
+      margin-bottom: 10px;
+    }
+
+    .product h3 {
+      margin-top: 0;
+      font-family: 'Cl1ckFont', Arial, sans-serif; /* Использование шрифта Cl1ckFont */
+      font-size: 16px;
+    }
+
+    .product p {
+      margin-bottom: 0;
+      color: #000;
+    }
+
+    .buy-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'AppetiteFont', Arial, sans-serif; /* Использование шрифта AppetiteFont */
+    }
+
+    .highlight {
+      font-weight: bold; /* Жирный шрифт */
+    }
+
+    #timer {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      color: #000; /* Черный цвет */
+      font-size: 24px;
+      font-family: "Courier New", monospace; /* Изменение шрифта таймера */
+    }
+
+    #timer .digit {
+      display: inline-block;
+      background-image: url("ramka.png"); /* Изображение рамки */
+      background-repeat: no-repeat;
+      background-size: contain;
+      color: #000; /* Черный цвет */
+      padding: 5px;
+      margin: 2px;
+      font-weight: bold; /* Жирный шрифт */
+    }
+  </style>
+</head>
+<body>
+  <h1>Магазин Cl1ck</h1>
+
+  <div class="product">
+    <img src="sugar.jpg" alt="Cocoin от Cl1ck">
+    <h3>Cocoin от Cl1ck</h3>
+    <p>Цена: <span class="highlight">$5</span></p>
+    <a href="https://youtu.be/1ervodIW5rs" class="buy-button" target="_blank">Купить</a>
+  </div>
+
+  <div class="product">
+    <img src="salt.jpg" alt="Mef от Cl1ck">
+    <h3>Mef от Cl1ck</h3>
+    <p>Цена: <span class="highlight">$3</span></p>
+    <a href="https://youtu.be/nAAGvhmX7U0" class="buy-button" target="_blank">Купить</a>
+  </div>
+
+  <div class="product">
+    <img src="pepper.jpg" alt="Geroin от Cl1ck">
+    <h3>Geroin от Cl1ck</h3>
+    <p>Цена: <span class="highlight">$2</span></p>
+    <a href="https://youtu.be/jqkZxC8YXDI" class="buy-button" target="_blank">Купить</a>
+  </div>
+
+  <div id="timer"></div>
+
+  <script>
+    function updateTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      var timeString = hours + ':' + addLeadingZero(minutes) + ':' + addLeadingZero(seconds);
+
+      var timerElement = document.getElementById('timer');
+      timerElement.innerHTML = ''; // Очистка содержимого
+
+      for (var i = 0; i < timeString.length; i++) {
+        var digitElement = document.createElement('span');
+        digitElement.className = 'digit';
+        digitElement.textContent = timeString[i];
+        timerElement.appendChild(digitElement);
+      }
+    }
+
+    function addLeadingZero(number) {
+      return (number < 10) ? '0' + number : number;
+    }
+
+    setInterval(updateTime, 1000); // Обновление времени каждую секунду
+  </script>
+</body>
+</html>
